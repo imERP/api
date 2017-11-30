@@ -1,0 +1,62 @@
+<%= form_with(model: user, local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :user_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code, id: :user_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nickName %>
+    <%= form.text_field :nickName, id: :user_nickName %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, id: :user_phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :openid %>
+    <%= form.text_field :openid, id: :user_openid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %>
+    <%= form.check_box :gender, id: :user_gender %>
+  </div>
+
+  <div class="field">
+    <%= form.label :avatarUrl %>
+    <%= form.text_field :avatarUrl, id: :user_avatarUrl %>
+  </div>
+
+  <div class="field">
+    <%= form.label :department_id %>
+    <%= form.text_field :department_id, id: :user_department_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remark %>
+    <%= form.text_area :remark, id: :user_remark %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
