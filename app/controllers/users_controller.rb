@@ -12,40 +12,6 @@ class UsersController < ApplicationController
   def show
   end
 
-  # POST /users/appply.json
-  #
-  # @param name
-  # @param gender
-  # @param phone
-  # @param department_id
-  # @param js_code
-  # @param userInfo
-  # @return
-  def appply
-    if params[:id]
-
-    else
-      if params[:js_code]
-        @openid = User.get_openid(params[:js_code])
-        p @openid
-        if @openid && User.find_by(openid: @openid)
-          render :json => {"errcode"=>40163, "errmsg"=>"user has applyed, hints: [ req_id: n.0607th54 ]"}, :status => 200
-        elsif @openid
-          User.create!(user_apply_params)
-          render :json => {"errcode"=>'20200', "errmsg"=>"success"}, :status => 200
-        else
-          render :json => {"errcode"=>'20404', "errmsg"=>"no openid"}, :status => 200
-        end
-      end
-    end
-  end
-
-  # GET /users/applies.json
-  def applies
-
-  end
-
-
   # GET /users/new
   def new
     @user = User.new
@@ -99,18 +65,6 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
-    end
-
-    def user_apply_params
-      {
-        name: params[:name],
-        gender: params[:gender],
-        phone: params[:phone],
-        openid: @openid,
-        department_id: params[:department_id],
-        remark: params[:userInfo],
-        avatarUrl: params[:userInfo][:avatarUrl],
-      }
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
