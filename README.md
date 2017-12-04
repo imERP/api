@@ -4,7 +4,7 @@
 
 ## usage
 
-git clone xxxx
+git clone https://github.com/imERP/api.git
 
 bundle install
 
